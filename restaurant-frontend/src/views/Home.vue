@@ -1,46 +1,131 @@
 <template>
-  <div class="flex justify-end my-8 mr-20">
-    <button type="button" class="px-9 py-2 bg-blue-400 text-center text-white rounded-md font-serif" @click="showModal">Add</button>
-  </div>
-  <div class="p-6">
-    <div class="overflow-x-auto rounded-2xl shadow-lg">
-      <table class="min-w-full border-collapse bg-white text-sm text-left">
-        <thead class="bg-gradient-to-r from-orange-600 to-amber-700 text-white">
-        <tr>
-          <th class="px-4 py-3 font-semibold">Logo</th>
-          <th class="px-4 py-3 font-semibold">Reg No</th>
-          <th class="px-4 py-3 font-semibold">Restaurant Name</th>
-          <th class="px-4 py-3 font-semibold">Owner Name</th>
-          <th class="px-4 py-3 font-semibold">Telephone Number</th>
-          <th class="px-4 py-3 font-semibold">Restaurant Address</th>
-          <th class="px-4 py-3 font-semibold">Opening Hours</th>
-          <th class="px-4 py-3 font-semibold">Closing Hours</th>
-          <th class="px-4 py-3 font-semibold">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="odd:bg-stone-100 even:bg-stone-50 hover:bg-amber-100 transition" v-for="restaurant in restaurants" :key="restaurant.id">
-          <td class="px-4 py-3">
-            <img :src="restaurant.logo" class="w-12 h-12" />
-          </td>
-          <td class="px-4 py-3"> {{ restaurant.regNumber }}</td>
-          <td class="px-4 py-3">{{ restaurant.restaurantName }}</td>
-          <td class="px-4 py-3">{{ restaurant.ownerName }}</td>
-          <td class="px-4 py-3">{{ restaurant.tel }}</td>
-          <td class="px-4 py-3">{{ restaurant.restaurantAddress }}</td>
-          <td class="px-4 py-3">{{ restaurant.openingHours }}</td>
-          <td class="px-4 py-3">{{ restaurant.closingHours }}</td>
-          <td class="px-4 py-3">
-          <div class="flex justify-center items-center space-x-4">
-            <button type="button" class="px-9 py-2 bg-gray-400 text-center text-white rounded-md font-serif" @click="editModal(restaurant.id)">Edit</button>
-            <button type="button" class="px-9 py-2 bg-red-400 text-center text-white rounded-md font-serif" @click="deleteRestaurant(restaurant.id)">Delete</button>
+    <div class="flex h-screen w-screen bg-gray-200">
+      <!-- Sidebar -->
+      <aside class="w-65 bg-white p-6 flex flex-col justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-red-500 mb-12 px-2">FoodMode</h1>
+          <nav>
+            <ul>
+              <li class="mb-6 px-2.5"><a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
+                <span><i class="ri-sticky-note-line mr-4"></i>Orders</span>
+                <i class="ri-arrow-right-line"></i>
+              </a>
+              </li>
+              <li class="mb-4 px-2.5">
+                <a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
+                  <span><i class="ri-restaurant-line mr-4"></i>Restaurants</span>
+                  <i class="ri-arrow-down-line"></i>
+                </a>
+                <ul class="ml-8 mt-4 space-y-4 text-sm text-gray-600">
+                  <li><h4 class="font-serif-display text-gray-700 hover:text-red-500 cursor-pointer" @click="showModal">Add New Restaurant</h4></li>
+                  <li class="bg-red-100 text-red-500 p-2 rounded-lg -ml-2"><a href="#" class="font-serif-display">Restaurants List</a></li>
+                </ul>
+              </li>
+              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-line-chart-line mr-4"></i>Analytics</a></li>
+              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-bookmark-2-line mr-4"></i>Tags</a></li>
+              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-user-line mr-4"></i>Customers</a></li>
+              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-settings-2-line mr-4"></i>Setting</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="p-1.5 rounded-2xl bg-[#9bb846]">
+          <div class="text-5xl mb-2 text-center">🍽️</div>
+          <h3 class="font-semibold pl-2 pt-2 text-white">Add Restaurants</h3>
+          <div class="flex items-center justify-between px-2 pb-2 text-white opacity-75">
+            <p class="text-xs">Manage your Restaurant</p>
+            <i class="ri-arrow-right-fill"></i>
           </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+        </div>
+        <button type="button" class="bg-white border border-red-500 text-red-500 font-semibold px-6 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors
+       duration-300 flex items-center space-x-2 mb-7" @click="logout">
+          <i class="ri-logout-box-line"></i>
+          <span>Logout</span>
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-7 overflow-y-auto">
+        <header class="flex justify-between items-center mb-8 bg-white py-4 px-9">
+          <div>
+            <h2 class="text-2xl font-bold">Hello {{ userName }},</h2>
+            <p class="text-gray-500">Welcome to back!</p>
+          </div>
+          <div class="flex items-center space-x-9">
+            <div class="relative cursor-pointer">
+              <i class="ri-shopping-cart-line text-gray-600 text-xl"></i>
+              <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+            </div>
+            <div class="relative mr-16 cursor-pointer">
+              <i class="ri-notification-2-line text-gray-600 text-xl"></i>
+              <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Admin" class="rounded-full">
+              <div>
+                <p class="font-semibold">{{ userName }}</p>
+                <p class="text-xs text-gray-500">Admin</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+              <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
+              <span>English</span>
+              <i class="ri-arrow-down-s-line text-xs"></i>
+            </div>
+            <i class="ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
+          </div>
+        </header>
+
+        <!-- Cards -->
+          <div class="grid grid-cols-2 gap-14">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl relative" v-for="restaurant in restaurants" :key="restaurant.id">
+
+              <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
+                <i class="ri-delete-bin-6-line text-xl"></i>
+              </button>
+
+              <div class="flex">
+                <div class="w-1/3">
+                  <img class="object-cover h-full w-full" :src="restaurant.logo" alt="Restaurant Img">
+                </div>
+                <div class="w-2/3 p-8">
+                  <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
+                  <h2 class="text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
+
+                  <div class="mt-6 space-y-4 text-gray-700">
+                    <div class="flex items-start">
+                      <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
+                      <div class="ml-3">
+                        <h4 class="font-semibold">Address</h4>
+                        <p class="text-gray-600">{{ restaurant.restaurantAddress }}</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center">
+                      <i class="fas fa-phone-alt w-5 text-red-500"></i>
+                      <div class="ml-3">
+                        <h4 class="font-semibold">Phone</h4>
+                        <p class="text-gray-600">{{ restaurant.tel }}</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center">
+                      <i class="fas fa-clock w-5 text-red-500"></i>
+                      <div class="ml-3">
+                        <h4 class="font-semibold">Hours</h4>
+                        <p class="text-gray-600">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-8 text-right">
+                    <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300" @click="editModal(restaurant.id)">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
     </div>
-  </div>
 </template>
 
 <script>
@@ -56,16 +141,19 @@ export default {
   name: "Home",
   data() {
     return {
-      restaurants: []
+      restaurants: [],
+      userName: null
     }
   },
   mounted() {
-    let user = localStorage.getItem("user");
+    let user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
       this.$router.push({
         name: 'signUp'
       })
     }
+    this.userName = user.name
+    console.log(user)
     this.restaurantData()
   },
   methods: {
@@ -221,7 +309,7 @@ export default {
           vm.restaurantData()
           Swal.fire({
             title: "Deleted!",
-            text: "Your file has been deleted.",
+            text: "Your Restaurant has been deleted.",
             icon: "success"
           });
         }else {
@@ -236,11 +324,19 @@ export default {
       }else {
         console.log("Api Call Failed", result);
       }
+    },
+    logout() {
+      localStorage.clear();
+      this.$router.push({
+        name: 'Login'
+      });
     }
   }
 }
 </script>
 
 <style scoped>
-
+.font-serif-display {
+  font-family: 'Lora', serif;
+}
 </style>

@@ -20,10 +20,7 @@
           </div>
 
           <!-- 3. Get Started Button -->
-          <button type="button" class="bg-stone-200 text-stone-800 font-serif-display font-semibold py-2 px-5 rounded-full shadow-lg hover:bg-stone-300
-           transition duration-300 ease-in-out cursor-pointer" @click="logout">
-            Logout
-          </button>
+
         </div>
 
       </div>
@@ -43,12 +40,7 @@ export default {
     }
   },
   methods: {
-    logout() {
-      localStorage.clear();
-      this.$router.push({
-        name: 'Login'
-      });
-    }
+
   }
 }
 </script>
