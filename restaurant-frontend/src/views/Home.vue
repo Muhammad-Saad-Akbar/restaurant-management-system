@@ -76,7 +76,7 @@
         </header>
 
         <!-- Cards -->
-          <div class="grid grid-cols-2 gap-14">
+          <div class="grid grid-cols-2 gap-13">
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
               <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
@@ -162,7 +162,7 @@ export default {
       let formInstance;
       const vm = this;
       Swal.fire({
-        title: 'Add Your Restaurant',
+        title: 'Add New Restaurant',
         html: `<div id="vue-form"></div>`,
         showCancelButton: true,
         confirmButtonText: "Add",
@@ -231,7 +231,7 @@ export default {
         title: "Edit Restaurant",
         html: `<div id="vue-edit-form"></div>`,
         showCancelButton: true,
-        confirmButtonText: "Save",
+        confirmButtonText: "Update",
         cancelButtonText: "Cancel",
         allowOutsideClick: false,
         focusConfirm: false,
