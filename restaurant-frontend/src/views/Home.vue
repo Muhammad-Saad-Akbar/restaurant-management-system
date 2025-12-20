@@ -136,6 +136,7 @@ import EditRestaurantForm from "@/components/EditRestaurantForm.vue";
 import axios from "axios";
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import BASE_URL from "@/api/api.js"
 
 export default {
   name: "Home",
@@ -178,7 +179,7 @@ export default {
           }
         },
         async preConfirm() {
-          return await axios.post('http://localhost:3000/restaurants', {
+          return await axios.post(`${BASE_URL}/restaurants`, {
             regNumber: vm.generateRegistrationNumber(),
             restaurantName: formInstance.restaurantName,
             ownerName: formInstance.ownerName,
@@ -245,7 +246,7 @@ export default {
           }
         },
         async preConfirm() {
-          return await axios.put(`http://localhost:3000/restaurants/${id}`, {
+          return await axios.put(`${BASE_URL}/restaurants/${id}`, {
             regNumber: formInstance.regNumber,
             restaurantName: formInstance.restaurantName,
             ownerName: formInstance.ownerName,
@@ -295,7 +296,7 @@ export default {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
        async preConfirm() {
-          return await axios.delete(`http://localhost:3000/restaurants/${id}`).then((response) => {
+          return await axios.delete(`${BASE_URL}/restaurants/${id}`).then((response) => {
             if (response.status === 200) {
               return response.status;
             }
@@ -318,7 +319,7 @@ export default {
       });
     },
     async restaurantData() {
-      let result = await axios.get('http://localhost:3000/restaurants');
+      let result = await axios.get(`${BASE_URL}/restaurants`);
       if (result.status === 200) {
         this.restaurants = result.data
       }else {

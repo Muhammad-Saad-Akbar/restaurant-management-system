@@ -68,6 +68,7 @@
 
 <script>
 import axios from 'axios';
+import BASE_URL from "@/api/api.js"
 export default {
   name: "SignUp",
   data() {
@@ -82,7 +83,7 @@ export default {
   },
   methods: {
    async signUp() {
-      let result = await axios.post('http://localhost:3000/users', this.formData)
+      let result = await axios.post(`${BASE_URL}/users`, this.formData)
       console.log(result);
       console.log("Saad");
       if (result.status == 201) {
