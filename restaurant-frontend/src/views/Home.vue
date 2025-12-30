@@ -45,6 +45,7 @@
 
       <!-- Main Content -->
       <main class="flex-1 p-7 overflow-y-auto">
+        <!-- Header -->
         <header class="flex justify-between items-center mb-8 bg-white py-4 px-9">
           <div>
             <h2 class="text-2xl font-bold">Hello {{ userName }},</h2>
@@ -74,9 +75,8 @@
             <i class="ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
           </div>
         </header>
-
         <!-- Cards -->
-          <div class="grid grid-cols-2 gap-13">
+        <div class="grid grid-cols-2 gap-13">
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
               <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
@@ -125,6 +125,7 @@
             </div>
           </div>
       </main>
+
     </div>
 </template>
 

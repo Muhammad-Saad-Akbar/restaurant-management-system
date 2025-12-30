@@ -55,6 +55,7 @@
 
 <script>
 import axios from "axios";
+import BASE_URL from "@/api/api.js"
 export default {
   name: "EditRestaurantForm",
   props: [
@@ -90,7 +91,7 @@ export default {
     async selectedRestaurantData() {
       if (this.restaurantId) {
         try {
-          let response = await axios.get(`http://localhost:3000/restaurants/${this.restaurantId}`);
+          let response = await axios.get(`${BASE_URL}/restaurants/${this.restaurantId}`);
           if (response.status === 200) {
             let data = response.data;
             this.regNumber = data.regNumber
