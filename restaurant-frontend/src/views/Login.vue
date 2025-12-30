@@ -2,7 +2,7 @@
   <div class="w-full flex h-screen p-2">
 
     <!-- Left Side: Image  -->
-    <div class="w-[55%] flex flex-col justify-between bg-cover bg-no-repeat p-12 text-white bg-[url('./src/assets/restaurant.jpg')] rounded-4xl relative" >
+    <div class="w-[55%] flex flex-col justify-between bg-cover bg-no-repeat p-12 text-white bg-[url('/src/assets/restaurant.jpg')] rounded-4xl relative">
       <div class="absolute inset-0 bg-black/65 rounded-4xl"></div>
       <div class="z-10">
         <p class="text-lg tracking-widest font-bold text-[#F5F5DC]">A WISE QUOTE</p>
