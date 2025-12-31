@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-screen w-screen bg-gray-200">
       <!-- Sidebar -->
-      <aside class="w-65 bg-white p-6 flex flex-col justify-between">
+      <aside class="hidden lg:flex lg:w-65 bg-white p-6 flex-col justify-between">
         <div>
           <h1 class="text-3xl font-bold text-red-500 mb-12 px-2">FoodMode</h1>
           <nav>
@@ -44,79 +44,92 @@
       </aside>
 
       <!-- Main Content -->
-      <main class="flex-1 p-7 overflow-y-auto">
+      <main class="flex-1 p-4 md:p-7 overflow-y-auto">
         <!-- Header -->
-        <header class="flex justify-between items-center mb-8 bg-white py-4 px-9">
+        <header class="flex justify-between items-center mb-6 md:mb-8 bg-white py-2 md:py-4 px-2.5 md:px-9 rounded-lg">
           <div>
-            <h2 class="text-2xl font-bold">Hello {{ userName }},</h2>
-            <p class="text-gray-500">Welcome to back!</p>
+            <h2 class="hidden md:block text-2xl font-bold">Hello {{ userName }},</h2>
+            <p class="text-sm font-semibold md:text-base md:font-medium md:text-gray-500">Welcome to back!</p>
           </div>
-          <div class="flex items-center space-x-9">
-            <div class="relative cursor-pointer">
+          <div class="flex items-center space-x-4 md:space-x-6 lg:space-x-9">
+            <div class="hidden md:block relative cursor-pointer">
               <i class="ri-shopping-cart-line text-gray-600 text-xl"></i>
               <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
             </div>
-            <div class="relative mr-16 cursor-pointer">
+            <div class="hidden md:block relative lg:mr-16 cursor-pointer">
               <i class="ri-notification-2-line text-gray-600 text-xl"></i>
               <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
             </div>
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 mt-1.5 md:mt-0">
               <img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Admin" class="rounded-full">
               <div>
-                <p class="font-semibold">{{ userName }}</p>
+                <p class="text-sm lg:text-base font-semibold">{{ userName }}</p>
                 <p class="text-xs text-gray-500">Admin</p>
               </div>
             </div>
-            <div class="flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+            <div class="hidden md:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
               <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
               <span>English</span>
               <i class="ri-arrow-down-s-line text-xs"></i>
             </div>
-            <i class="ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
+            <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
+            <button type="button" class="bg-red-100 text-red-500 px-3 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-300 mt-1.5 md:mt-0
+            lg:hidden" @click="logout">
+              <i class="ri-logout-box-line font-bold"></i>
+            </button>
           </div>
         </header>
+
+<!--        Add New Restaurant Button-->
+        <div class="mb-6 lg:hidden">
+          <button class="bg-red-500 text-white font-semibold w-full py-3 rounded-lg hover:bg-red-600 transition-colors duration-300" @click="showModal">
+            Add New Restaurant
+          </button>
+        </div>
+
         <!-- Cards -->
-        <div class="grid grid-cols-2 gap-13">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-13">
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
               <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
                 <i class="ri-delete-bin-6-line text-xl"></i>
               </button>
 
-              <div class="flex">
-                <div class="w-1/3">
-                  <img class="object-cover h-full w-full" :src="restaurant.logo" alt="Restaurant Img">
+              <div class="flex flex-col md:flex-row">
+                <div class="w-full md:w-1/3">
+                  <img class="object-cover h-48 w-full md:h-full" :src="restaurant.logo" alt="Restaurant Img">
                 </div>
-                <div class="w-2/3 p-8">
+                <div class="w-full md:w-2/3 p-6 md:p-8">
                   <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
-                  <h2 class="text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
+                  <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
 
                   <div class="mt-6 space-y-4 text-gray-700">
                     <div class="flex items-start">
                       <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
                       <div class="ml-3">
                         <h4 class="font-semibold">Address</h4>
-                        <p class="text-gray-600">{{ restaurant.restaurantAddress }}</p>
+                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
                       </div>
                     </div>
                     <div class="flex items-center">
                       <i class="fas fa-phone-alt w-5 text-red-500"></i>
                       <div class="ml-3">
                         <h4 class="font-semibold">Phone</h4>
-                        <p class="text-gray-600">{{ restaurant.tel }}</p>
+                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
                       </div>
                     </div>
                     <div class="flex items-center">
                       <i class="fas fa-clock w-5 text-red-500"></i>
                       <div class="ml-3">
                         <h4 class="font-semibold">Hours</h4>
-                        <p class="text-gray-600">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
+                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
                       </div>
                     </div>
                   </div>
 
                   <div class="mt-8 text-right">
-                    <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300" @click="editModal(restaurant.id)">
+                    <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300"
+                            @click="editModal(restaurant.id)">
                       Edit
                     </button>
                   </div>
@@ -125,7 +138,6 @@
             </div>
           </div>
       </main>
-
     </div>
 </template>
 
@@ -320,7 +332,7 @@ export default {
       });
     },
     async restaurantData() {
-      let result = await axios.get(`${BASE_URL}/restaurants`);
+      let result = await axios.get(`http://localhost:3000/restaurants`);
       if (result.status === 200) {
         this.restaurants = result.data
       }else {
