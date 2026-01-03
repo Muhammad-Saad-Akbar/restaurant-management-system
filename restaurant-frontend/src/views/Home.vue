@@ -48,11 +48,11 @@
       <!-- Header -->
       <header class="flex justify-between items-center mb-6 md:mb-7 lg:mb-8 bg-white py-2 md:py-2.5 lg:py-4 px-2.5 md:px-6 lg:px-9 rounded-lg">
         <div>
-          <h2 class="hidden lg:block text-2xl font-bold">Hello {{ userName }},</h2>
-          <p class="hidden lg:block text-sm font-semibold md:text-base md:font-medium md:text-gray-500">Welcome to back!</p>
-          <div class="flex space-x-1.5 lg:hidden">
-            <i class="ri-home-2-line text-red-500"></i>
-            <h3 class="font-serif-display text-red-500">Home</h3>
+          <h2 class="hidden xl:block text-2xl font-bold">Hello {{ userName }},</h2>
+          <p class="hidden xl:block text-gray-500">Welcome to back!</p>
+          <div class="flex space-x-1.5 xl:hidden">
+            <i class="ri-home-2-line text-red-500 font-semibold lg:font-bold"></i>
+            <h3 class="font-serif-display text-red-500 font-semibold lg:font-bold">Home</h3>
           </div>
         </div>
         <div class="flex items-center space-x-4 md:space-x-6 lg:space-x-9">
@@ -71,7 +71,7 @@
               <p class="text-xs text-gray-500 font-serif-display">Admin</p>
             </div>
           </div>
-          <div class="hidden lg:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+          <div class="hidden xl:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
             <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
             <span>English</span>
             <i class="ri-arrow-down-s-line text-xs"></i>
@@ -93,7 +93,7 @@
       </div>
 
       <!-- Cards -->
-      <div class="flex flex-col px-2.5 md:items-center md:px-0 lg:grid grid-cols-2 gap-7.5 md:gap-11 lg:gap-13">
+      <div class="flex flex-col px-2.5 md:items-center lg:items-start md:px-0 2xl:grid grid-cols-2 gap-7.5 md:gap-11 lg:gap-13">
         <div class="mt-1 w-full md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
           <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
