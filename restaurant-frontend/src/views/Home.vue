@@ -1,144 +1,149 @@
 <template>
-    <div class="flex h-screen w-screen bg-gray-200">
-      <!-- Sidebar -->
-      <aside class="hidden lg:flex lg:w-65 bg-white p-6 flex-col justify-between">
-        <div>
-          <h1 class="text-3xl font-bold text-red-500 mb-12 px-2">FoodMode</h1>
-          <nav>
-            <ul>
-              <li class="mb-6 px-2.5"><a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
-                <span><i class="ri-sticky-note-line mr-4"></i>Orders</span>
-                <i class="ri-arrow-right-line"></i>
+  <div class="flex h-screen w-screen bg-gray-200">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex lg:w-65 bg-white p-6 flex-col justify-between">
+      <div>
+        <h1 class="text-3xl font-bold text-red-500 mb-12 px-2">FoodMode</h1>
+        <nav>
+          <ul>
+            <li class="mb-6 px-2.5"><a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
+              <span><i class="ri-sticky-note-line mr-4"></i>Orders</span>
+              <i class="ri-arrow-right-line"></i>
+            </a>
+            </li>
+            <li class="mb-4 px-2.5">
+              <a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
+                <span><i class="ri-restaurant-line mr-4"></i>Restaurants</span>
+                <i class="ri-arrow-down-line"></i>
               </a>
-              </li>
-              <li class="mb-4 px-2.5">
-                <a href="#" class="flex items-center text-gray-700 font-serif-display hover:text-red-500 justify-between">
-                  <span><i class="ri-restaurant-line mr-4"></i>Restaurants</span>
-                  <i class="ri-arrow-down-line"></i>
-                </a>
-                <ul class="ml-8 mt-4 space-y-4 text-sm text-gray-600">
-                  <li><h4 class="font-serif-display text-gray-700 hover:text-red-500 cursor-pointer" @click="showModal">Add New Restaurant</h4></li>
-                  <li class="bg-red-100 text-red-500 p-2 rounded-lg -ml-2"><a href="#" class="font-serif-display">Restaurants List</a></li>
-                </ul>
-              </li>
-              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-line-chart-line mr-4"></i>Analytics</a></li>
-              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-bookmark-2-line mr-4"></i>Tags</a></li>
-              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-user-line mr-4"></i>Customers</a></li>
-              <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-settings-2-line mr-4"></i>Setting</a></li>
-            </ul>
-          </nav>
+              <ul class="ml-8 mt-4 space-y-4 text-sm text-gray-600">
+                <li><h4 class="font-serif-display text-gray-700 hover:text-red-500 cursor-pointer" @click="showModal">Add New Restaurant</h4></li>
+                <li class="bg-red-100 text-red-500 p-2 rounded-lg -ml-2"><a href="#" class="font-serif-display">Restaurants List</a></li>
+              </ul>
+            </li>
+            <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-line-chart-line mr-4"></i>Analytics</a></li>
+            <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-bookmark-2-line mr-4"></i>Tags</a></li>
+            <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-user-line mr-4"></i>Customers</a></li>
+            <li class="mb-6 px-2.5"><a href="#" class="flex items-center font-serif-display text-gray-700 hover:text-red-500"><i class="ri-settings-2-line mr-4"></i>Setting</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="p-1.5 rounded-2xl bg-[#9bb846]">
+        <div class="text-5xl mb-2 text-center">🍽️</div>
+        <h3 class="font-semibold pl-2 pt-2 text-white">Add Restaurants</h3>
+        <div class="flex items-center justify-between px-2 pb-2 text-white opacity-75">
+          <p class="text-xs">Manage your Restaurant</p>
+          <i class="ri-arrow-right-fill"></i>
         </div>
-        <div class="p-1.5 rounded-2xl bg-[#9bb846]">
-          <div class="text-5xl mb-2 text-center">🍽️</div>
-          <h3 class="font-semibold pl-2 pt-2 text-white">Add Restaurants</h3>
-          <div class="flex items-center justify-between px-2 pb-2 text-white opacity-75">
-            <p class="text-xs">Manage your Restaurant</p>
-            <i class="ri-arrow-right-fill"></i>
-          </div>
-        </div>
-        <button type="button" class="bg-white border border-red-500 text-red-500 font-semibold px-6 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors
+      </div>
+      <button type="button" class="bg-white border border-red-500 text-red-500 font-semibold px-6 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors
        duration-300 flex items-center space-x-2 mb-7" @click="logout">
-          <i class="ri-logout-box-line"></i>
-          <span>Logout</span>
-        </button>
-      </aside>
+        <i class="ri-logout-box-line"></i>
+        <span>Logout</span>
+      </button>
+    </aside>
 
-      <!-- Main Content -->
-      <main class="flex-1 p-4 md:p-7 overflow-y-auto">
-        <!-- Header -->
-        <header class="flex justify-between items-center mb-6 md:mb-8 bg-white py-2 md:py-4 px-2.5 md:px-9 rounded-lg">
-          <div>
-            <h2 class="hidden md:block text-2xl font-bold">Hello {{ userName }},</h2>
-            <p class="text-sm font-semibold md:text-base md:font-medium md:text-gray-500">Welcome to back!</p>
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-7 overflow-y-auto">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-6 md:mb-7 lg:mb-8 bg-white py-2 md:py-2.5 lg:py-4 px-2.5 md:px-6 lg:px-9 rounded-lg">
+        <div>
+          <h2 class="hidden lg:block text-2xl font-bold">Hello {{ userName }},</h2>
+          <p class="hidden lg:block text-sm font-semibold md:text-base md:font-medium md:text-gray-500">Welcome to back!</p>
+          <div class="flex space-x-1.5 lg:hidden">
+            <i class="ri-home-2-line text-red-500"></i>
+            <h3 class="font-serif-display text-red-500">Home</h3>
           </div>
-          <div class="flex items-center space-x-4 md:space-x-6 lg:space-x-9">
-            <div class="hidden md:block relative cursor-pointer">
-              <i class="ri-shopping-cart-line text-gray-600 text-xl"></i>
-              <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+        </div>
+        <div class="flex items-center space-x-4 md:space-x-6 lg:space-x-9">
+          <div class="hidden md:block relative cursor-pointer">
+            <i class="ri-shopping-cart-line text-gray-600 text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+          </div>
+          <div class="hidden md:block relative lg:mr-16 cursor-pointer">
+            <i class="ri-notification-2-line text-gray-600 text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
+          </div>
+          <div class="flex items-center space-x-2 mt-1.5 md:mt-0">
+            <img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Admin" class="rounded-full">
+            <div>
+              <p class="text-sm lg:text-base font-semibold font-serif-display">{{ userName }}</p>
+              <p class="text-xs text-gray-500 font-serif-display">Admin</p>
             </div>
-            <div class="hidden md:block relative lg:mr-16 cursor-pointer">
-              <i class="ri-notification-2-line text-gray-600 text-xl"></i>
-              <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
-            </div>
-            <div class="flex items-center space-x-2 mt-1.5 md:mt-0">
-              <img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Admin" class="rounded-full">
-              <div>
-                <p class="text-sm lg:text-base font-semibold">{{ userName }}</p>
-                <p class="text-xs text-gray-500">Admin</p>
-              </div>
-            </div>
-            <div class="hidden md:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
-              <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
-              <span>English</span>
-              <i class="ri-arrow-down-s-line text-xs"></i>
-            </div>
-            <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
-            <button type="button" class="bg-red-100 text-red-500 px-3 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-300 mt-1.5 md:mt-0
+          </div>
+          <div class="hidden lg:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+            <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
+            <span>English</span>
+            <i class="ri-arrow-down-s-line text-xs"></i>
+          </div>
+          <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
+          <button type="button" class="bg-red-100 text-red-500 px-3 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-300 mt-1.5 md:mt-0
             lg:hidden" @click="logout">
-              <i class="ri-logout-box-line font-bold"></i>
-            </button>
-          </div>
-        </header>
-
-<!--        Add New Restaurant Button-->
-        <div class="mb-6 lg:hidden">
-          <button class="bg-red-500 text-white font-semibold w-full py-3 rounded-lg hover:bg-red-600 transition-colors duration-300" @click="showModal">
-            Add New Restaurant
+            <i class="ri-logout-box-line font-bold"></i>
           </button>
         </div>
+      </header>
 
-        <!-- Cards -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-13">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl relative" v-for="restaurant in restaurants" :key="restaurant.id">
+      <!--        Add New Restaurant Button-->
+      <div class="mb-6 md:mb-8 md:flex justify-end lg:hidden">
+        <button class="bg-red-500 text-white font-semibold w-full md:w-auto md:px-4 py-3 rounded-lg hover:bg-red-600 transition-colors duration-300 space-x-2" @click="showModal">
+          <i class="ri-add-line"></i>
+          <span>Add New Restaurant</span>
+        </button>
+      </div>
 
-              <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
-                <i class="ri-delete-bin-6-line text-xl"></i>
-              </button>
+      <!-- Cards -->
+      <div class="flex flex-col px-2.5 md:items-center md:px-0 lg:grid grid-cols-2 gap-7.5 md:gap-11 lg:gap-13">
+        <div class="mt-1 w-full md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
-              <div class="flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3">
-                  <img class="object-cover h-48 w-full md:h-full" :src="restaurant.logo" alt="Restaurant Img">
-                </div>
-                <div class="w-full md:w-2/3 p-6 md:p-8">
-                  <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
-                  <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
+          <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
+            <i class="ri-delete-bin-6-line text-xl"></i>
+          </button>
 
-                  <div class="mt-6 space-y-4 text-gray-700">
-                    <div class="flex items-start">
-                      <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
-                      <div class="ml-3">
-                        <h4 class="font-semibold">Address</h4>
-                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
-                      </div>
-                    </div>
-                    <div class="flex items-center">
-                      <i class="fas fa-phone-alt w-5 text-red-500"></i>
-                      <div class="ml-3">
-                        <h4 class="font-semibold">Phone</h4>
-                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
-                      </div>
-                    </div>
-                    <div class="flex items-center">
-                      <i class="fas fa-clock w-5 text-red-500"></i>
-                      <div class="ml-3">
-                        <h4 class="font-semibold">Hours</h4>
-                        <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
-                      </div>
-                    </div>
+          <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/3">
+              <img class="object-cover h-52 w-full md:h-full" :src="restaurant.logo" alt="Restaurant Img">
+            </div>
+            <div class="w-full md:w-2/3 p-6 pb-4.5 md:p-8">
+              <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
+
+              <div class="mt-6 space-y-4 text-gray-700">
+                <div class="flex items-start">
+                  <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
+                  <div class="ml-3">
+                    <h4 class="font-semibold">Address</h4>
+                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
                   </div>
-
-                  <div class="mt-8 text-right">
-                    <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300"
-                            @click="editModal(restaurant.id)">
-                      Edit
-                    </button>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-phone-alt w-5 text-red-500"></i>
+                  <div class="ml-3">
+                    <h4 class="font-semibold">Phone</h4>
+                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-clock w-5 text-red-500"></i>
+                  <div class="ml-3">
+                    <h4 class="font-semibold">Hours</h4>
+                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
                   </div>
                 </div>
               </div>
+
+              <div class="mt-6.5 md:mt-8 text-right">
+                <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300"
+                        @click="editModal(restaurant.id)">
+                  Edit
+                </button>
+              </div>
             </div>
           </div>
-      </main>
-    </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -308,7 +313,7 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-       async preConfirm() {
+        async preConfirm() {
           return await axios.delete(`${BASE_URL}/restaurants/${id}`).then((response) => {
             if (response.status === 200) {
               return response.status;
