@@ -16,14 +16,19 @@
     </div>
 
     <!-- Right Side: Form -->
-    <div class="w-full xl:w-[45%] p-4 flex flex-col justify-center items-center xl:p-12">
+    <div class="w-full flex flex-col justify-center items-center p-4 xl:w-[45%] xl:p-12">
       <div class="w-full max-w-md">
 
-        <div class="text-center mb-6 xl:hidden">
-            <span class="inline-block p-4 bg-red-100 rounded-full">
-                <svg class="w-10 h-10 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM5 5a1 1 0 00-1 1v1a1 1 0 002 0V6a1 1 0 00-1-1zm10 0a1 1 0 00-1 1v1a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-            </span>
+        <div class="text-center mb-12 xl:hidden">
+          <lord-icon
+            src="https://cdn.lordicon.com/rzsnbiaw.json"
+            trigger="loop"
+            delay="2000"
+            colors="primary:#f4a09c,secondary:#ee6d66"
+            style="width:150px;height:150px">
+          </lord-icon>
         </div>
+
 
         <h2 class="font-serif-display text-2xl md:text-3xl lg:text-4xl mb-2 text-gray-800">Welcome Back</h2>
         <p class="font-serif-display text-gray-500 mb-8 text-sm md:text-base">Enter your email and password to access your account</p>
@@ -65,6 +70,7 @@
 <script>
 import axios from "axios";
 import BASE_URL from "@/api/api.js"
+
 
 export default {
   name: "Login",
