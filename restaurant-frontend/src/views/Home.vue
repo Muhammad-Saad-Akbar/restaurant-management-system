@@ -28,7 +28,7 @@
           </ul>
         </nav>
       </div>
-      <div class="p-1.5 rounded-2xl bg-[#9bb846]">
+      <div class="p-1.5 rounded-2xl bg-[#9bb846] hidden xl:block">
         <div class="text-5xl mb-2 text-center">🍽️</div>
         <h3 class="font-semibold pl-2 pt-2 text-white">Add Restaurants</h3>
         <div class="flex items-center justify-between px-2 pb-2 text-white opacity-75">
@@ -37,16 +37,16 @@
         </div>
       </div>
       <button type="button" class="bg-white border border-red-500 text-red-500 font-semibold px-6 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors
-       duration-300 flex items-center space-x-2 mb-7" @click="logout">
+       duration-300 flex items-center space-x-2 mb-7 hidden xl:block" @click="logout">
         <i class="ri-logout-box-line"></i>
         <span>Logout</span>
       </button>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-4 md:p-7 overflow-y-auto">
+    <main class="flex-1 p-4 sm:p-7 overflow-y-auto">
       <!-- Header -->
-      <header class="flex justify-between items-center mb-6 md:mb-7 lg:mb-8 bg-white py-2 md:py-2.5 lg:py-4 px-2.5 md:px-6 lg:px-9 rounded-lg">
+      <header class="flex justify-between items-center mb-6 md:mb-7 lg:mb-8 bg-white py-2 md:py-2.5 lg:py-4 px-2.5 sm:px-4 md:px-6 lg:px-9 rounded-lg">
         <div>
           <h2 class="hidden xl:block text-2xl font-bold">Hello {{ userName }},</h2>
           <p class="hidden xl:block text-gray-500">Welcome to back!</p>
@@ -55,12 +55,12 @@
             <h3 class="font-serif-display text-red-500 font-semibold lg:font-bold">Home</h3>
           </div>
         </div>
-        <div class="flex items-center space-x-4 md:space-x-6 lg:space-x-9">
-          <div class="hidden md:block relative cursor-pointer">
+        <div class="flex items-center space-x-4.5 sm:space-x-6 lg:space-x-9">
+          <div class="hidden sm:block relative cursor-pointer">
             <i class="ri-shopping-cart-line text-gray-600 text-xl"></i>
             <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
           </div>
-          <div class="hidden md:block relative lg:mr-16 cursor-pointer">
+          <div class="hidden sm:block relative lg:mr-16 cursor-pointer">
             <i class="ri-notification-2-line text-gray-600 text-xl"></i>
             <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
           </div>
@@ -78,7 +78,7 @@
           </div>
           <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
           <button type="button" class="bg-red-100 text-red-500 px-3 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-300 mt-1.5 md:mt-0
-            lg:hidden" @click="logout">
+            xl:hidden" @click="logout">
             <i class="ri-logout-box-line font-bold"></i>
           </button>
         </div>
@@ -93,8 +93,8 @@
       </div>
 
       <!-- Cards -->
-      <div class="flex flex-col px-2.5 md:items-center lg:items-start md:px-0 2xl:grid grid-cols-2 gap-7.5 md:gap-11 lg:gap-13">
-        <div class="mt-1 w-full md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div class="flex flex-col px-2.5 sm:items-center lg:items-start md:px-0 2xl:grid grid-cols-2 gap-7.5 sm:gap-10 md:gap-11 lg:gap-13">
+        <div class="mt-1 w-full sm:max-w-sm md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants" :key="restaurant.id">
 
           <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
             <i class="ri-delete-bin-6-line text-xl"></i>

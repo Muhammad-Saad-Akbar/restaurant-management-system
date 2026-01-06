@@ -37,14 +37,14 @@
         <div class="mb-5">
           <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
           <input type="email" id="email" placeholder="Enter your email" class="w-full py-3 px-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none
-          focus:ring-2 focus:ring-red-400" v-model="email">
+          focus:ring-2 focus:ring-red-400" v-model="email" required>
         </div>
 
         <div class="mb-5">
           <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
           <div class="relative">
             <input type="password" id="password" placeholder="Enter your password" class="w-full py-3 px-4 bg-gray-50 border border-gray-200 rounded-lg
-            focus:outline-none focus:ring-2 focus:ring-red-400" v-model="password">
+            focus:outline-none focus:ring-2 focus:ring-red-400" v-model="password" required>
             <span class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
