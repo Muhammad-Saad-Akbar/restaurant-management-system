@@ -17,7 +17,7 @@
                 <i class="ri-arrow-down-line"></i>
               </a>
               <ul class="ml-8 mt-4 space-y-4 text-sm text-gray-600">
-                <li><h4 class="font-serif-display text-gray-700 hover:text-red-500 cursor-pointer" @click="showModal">Add New Restaurant</h4></li>
+                <li><h4 class="font-serif-display text-gray-700 hover:text-red-500 cursor-pointer" @click="addRestaurant">Add New Restaurant</h4></li>
                 <li class="bg-red-100 text-red-500 p-2 rounded-lg -ml-2"><a href="#" class="font-serif-display">Restaurants List</a></li>
               </ul>
             </li>
@@ -86,61 +86,68 @@
 
       <!--        Add New Restaurant Button-->
       <div class="mb-6 md:mb-8 md:flex justify-end lg:hidden">
-        <button class="bg-red-500 text-white font-semibold w-full md:w-auto md:px-4 py-3 rounded-lg hover:bg-red-600 transition-colors duration-300 space-x-2" @click="showModal">
+        <button class="bg-red-500 text-white font-semibold w-full md:w-auto md:px-4 py-3 rounded-lg hover:bg-red-600 transition-colors duration-300 space-x-2"
+                @click="addRestaurant">
           <i class="ri-add-line"></i>
           <span>Add New Restaurant</span>
         </button>
       </div>
 
       <!-- Cards -->
-      <div class="flex flex-col px-2.5 sm:items-center lg:items-start md:px-0 2xl:grid grid-cols-2 gap-7.5 sm:gap-10 md:gap-11 lg:gap-13">
-        <div class="mt-1 w-full sm:max-w-sm md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div v-if="restaurants.length > 0">
+        <div class="flex flex-col px-2.5 sm:items-center lg:items-start md:px-0 2xl:grid grid-cols-2 gap-7.5 sm:gap-10 md:gap-11 lg:gap-13">
+          <div class="mt-1 w-full sm:max-w-sm md:mt-0 md:max-w-xl lg:max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden relative" v-for="restaurant in restaurants"
+               :key="restaurant.id">
 
-          <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
-            <i class="ri-delete-bin-6-line text-xl"></i>
-          </button>
+            <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300" @click="deleteRestaurant(restaurant.id)">
+              <i class="ri-delete-bin-6-line text-xl"></i>
+            </button>
 
-          <div class="flex flex-col md:flex-row">
-            <div class="w-full md:w-1/3">
-              <img class="object-cover h-52 w-full md:h-full" :src="restaurant.logo" alt="Restaurant Img">
-            </div>
-            <div class="w-full md:w-2/3 p-6 pb-4.5 md:p-8">
-              <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
-              <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
-
-              <div class="mt-6 space-y-4 text-gray-700">
-                <div class="flex items-start">
-                  <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
-                  <div class="ml-3">
-                    <h4 class="font-semibold">Address</h4>
-                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <i class="fas fa-phone-alt w-5 text-red-500"></i>
-                  <div class="ml-3">
-                    <h4 class="font-semibold">Phone</h4>
-                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <i class="fas fa-clock w-5 text-red-500"></i>
-                  <div class="ml-3">
-                    <h4 class="font-semibold">Hours</h4>
-                    <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
-                  </div>
-                </div>
+            <div class="flex flex-col md:flex-row">
+              <div class="w-full md:w-1/3">
+                <img class="object-cover h-52 w-full md:h-full" :src="restaurant.logo" alt="Restaurant Img">
               </div>
+              <div class="w-full md:w-2/3 p-6 pb-4.5 md:p-8">
+                <p class="text-sm text-gray-500 font-medium">{{ restaurant.regNumber }}</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-1">{{ restaurant.restaurantName }}</h2>
 
-              <div class="mt-6.5 md:mt-8 text-right">
-                <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300"
-                        @click="editModal(restaurant.id)">
-                  Edit
-                </button>
+                <div class="mt-6 space-y-4 text-gray-700">
+                  <div class="flex items-start">
+                    <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
+                    <div class="ml-3">
+                      <h4 class="font-semibold">Address</h4>
+                      <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-phone-alt w-5 text-red-500"></i>
+                    <div class="ml-3">
+                      <h4 class="font-semibold">Phone</h4>
+                      <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-clock w-5 text-red-500"></i>
+                    <div class="ml-3">
+                      <h4 class="font-semibold">Hours</h4>
+                      <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6.5 md:mt-8 text-right">
+                  <button type="button" class="bg-red-500 text-white font-semibold px-8 py-2 rounded-full hover:bg-red-600 transition-colors duration-300"
+                          @click="editRestaurant(restaurant.id)">
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div v-else>
+        <p class="font-serif-display text-gray-500 text-lg font-bold">No restaurants have been added yet</p>
       </div>
     </main>
   </div>
@@ -176,7 +183,7 @@ export default {
     this.restaurantData()
   },
   methods: {
-    showModal() {
+    addRestaurant() {
       let formApp;
       let formInstance;
       const vm = this;
@@ -241,7 +248,7 @@ export default {
       const randomNum = Math.floor(Math.random() * 1000);
       return `${prefix}-${randomNum}`;
     },
-    editModal(id) {
+    editRestaurant(id) {
       let formApp;
       let formInstance;
       const vm = this;
@@ -337,7 +344,7 @@ export default {
       });
     },
     async restaurantData() {
-      let result = await axios.get(`http://localhost:3000/restaurants`);
+      let result = await axios.get(`${BASE_URL}/restaurants`);
       if (result.status === 200) {
         this.restaurants = result.data
       }else {
