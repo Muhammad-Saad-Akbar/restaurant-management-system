@@ -87,7 +87,7 @@ export default {
       if (result.status == 200 && result.data.length > 0) {
         localStorage.setItem("user", JSON.stringify(result.data[0]));
         this.$router.push({
-          name: 'home'
+          name: 'Dashboard'
         });
       }
     }
