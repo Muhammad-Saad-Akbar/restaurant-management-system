@@ -95,7 +95,7 @@
 
       <!-- Cards -->
       <Suspense>
-        <AsyncComponent />
+        <AsyncComponent ref="restaurantsRef" />
         <template #fallback>
           <div class="flex items-center justify-center h-40">
             <div class="relative w-20 h-20">
@@ -125,7 +125,9 @@ import AsyncComponent from "@/components/AsyncComponent.vue";
 
 export default {
   name: "Home",
-  components: {AsyncComponent},
+  components: {
+    AsyncComponent
+  },
   data() {
     return {
       userName: null
@@ -191,7 +193,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed && result.value.status === 201) {
           console.log("Restaurant Added Successfully", result);
-          // vm.restaurantData()
+          vm.refreshRestaurants()
           toast.success(' New Restaurant Successfully Added', {
             autoClose: 2200,
             style: {
@@ -213,6 +215,9 @@ export default {
       this.$router.push({
         name: 'Login'
       });
+    },
+    refreshRestaurants() {
+      this.$refs.restaurantsRef.fetchRestaurants();
     }
   }
 }

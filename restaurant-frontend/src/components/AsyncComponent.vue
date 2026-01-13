@@ -61,7 +61,7 @@
 import axios from "axios";
 import BASE_URL from "@/api/api.js";
 import Swal from "sweetalert2";
-import {createApp, ref} from "vue";
+import {createApp, ref, defineExpose} from "vue";
 import EditRestaurantForm from "@/components/EditRestaurantForm.vue";
 import {toast} from "vue3-toastify";
 
@@ -80,6 +80,10 @@ export default {
     };
 
     await fetchRestaurants();
+
+    defineExpose({
+      fetchRestaurants
+    });
 
     return {
       restaurants,
