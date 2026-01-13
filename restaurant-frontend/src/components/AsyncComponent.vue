@@ -71,7 +71,7 @@ export default {
   async setup() {
     const restaurants = ref([]);
 
-    await new Promise(res => setTimeout(res, 7000));
+    await new Promise(res => setTimeout(res, 3000));
 
     const fetchRestaurants = async () => {
       const response = await axios.get(`${BASE_URL}/restaurants`);
