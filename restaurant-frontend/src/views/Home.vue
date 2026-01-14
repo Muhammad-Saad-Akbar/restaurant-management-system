@@ -64,6 +64,12 @@
             <i class="ri-notification-2-line text-gray-600 text-xl"></i>
             <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">4</span>
           </div>
+          <div class="hidden xl:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+            <img src="https://flagcdn.com/us.svg" width="23" alt="United States">
+            <span>English</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+          <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
           <div class="flex items-center space-x-2 mt-1.5 md:mt-0">
             <img src="https://i.pravatar.cc/40?u=a042581f4e29026704d" alt="Admin" class="rounded-full">
             <div>
@@ -71,12 +77,6 @@
               <p class="text-xs text-gray-500 font-serif-display">Admin</p>
             </div>
           </div>
-          <div class="hidden xl:flex items-center space-x-2 bg-gray-200 rounded-full p-2 cursor-pointer">
-            <img src="https://flagcdn.com/us.svg" width="30" alt="United States">
-            <span>English</span>
-            <i class="ri-arrow-down-s-line text-xs"></i>
-          </div>
-          <i class="hidden lg:block ri-lock-unlock-line text-gray-600 text-xl cursor-pointer"></i>
           <button type="button" class="bg-red-100 text-red-500 px-3 py-2 rounded-full hover:bg-red-500 hover:text-white transition-colors duration-300 mt-1.5 md:mt-0
             xl:hidden" @click="logout">
             <i class="ri-logout-box-line font-bold"></i>

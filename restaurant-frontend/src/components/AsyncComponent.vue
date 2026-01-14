@@ -19,21 +19,21 @@
 
             <div class="mt-6 space-y-4 text-gray-700">
               <div class="flex items-start">
-                <i class="fas fa-map-marker-alt w-5 mt-1 text-red-500"></i>
+                <i class="ri-map-pin-line w-5 mt-1"></i>
                 <div class="ml-3">
                   <h4 class="font-semibold">Address</h4>
                   <p class="text-gray-600 text-sm md:text-base">{{ restaurant.restaurantAddress }}</p>
                 </div>
               </div>
               <div class="flex items-center">
-                <i class="fas fa-phone-alt w-5 text-red-500"></i>
+                <i class="ri-phone-line w-5"></i>
                 <div class="ml-3">
                   <h4 class="font-semibold">Phone</h4>
                   <p class="text-gray-600 text-sm md:text-base">{{ restaurant.tel }}</p>
                 </div>
               </div>
               <div class="flex items-center">
-                <i class="fas fa-clock w-5 text-red-500"></i>
+                <i class="ri-time-line w-5"></i>
                 <div class="ml-3">
                   <h4 class="font-semibold">Hours</h4>
                   <p class="text-gray-600 text-sm md:text-base">{{ restaurant.openingHours }} (Opening) - {{ restaurant.closingHours }} (Closing)</p>

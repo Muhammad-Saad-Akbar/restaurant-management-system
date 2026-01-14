@@ -109,7 +109,7 @@ export default {
     let user = localStorage.getItem("user");
     if (user) {
       this.$router.push({
-        name: 'home'
+        name: 'Dashboard'
       })
     }
   }
